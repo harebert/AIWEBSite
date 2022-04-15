@@ -1,0 +1,578 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0,user-scalable=yes,maximum-scale=1.0">
+<title>JavaScript/HTML格式化-BeJSON.com</title>
+<meta name="keywords" content="js在线格式化,html在线格式化,js代码格式化,JS在线加密,JS加密" />
+<meta name="description" content="可以对JS，HTML，混合HTML和JS进行格式化排版，整齐的进行显示。可以对JS进行加密，加密压缩。" />
+<link rel="stylesheet" type="text/css" href="static/bejson/css/global.min.css?20200630" />
+<link rel="stylesheet" type="text/css" href="static/bejson/css/indexCodeMirror.min.css" />
+<link rel="stylesheet" type="text/css" href="static/bejson/css/swiper.min.css" />
+<link rel="stylesheet" type="text/css" href="static/bejson/css/common.css" />
+<script src="static/ydxyt/1.js"></script>
+</head>
+<script>
+    function fwzibicqecyt(blockid) {
+        jiazai_dag_all(blockid);
+    }
+</script>
+<body class="load-indicator" data-loading="上传中，请稍候..." data-siteid="2">
+<!-- 头部导航 -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?4aa52dbe1c3f25aa133d68ee023b1c61";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<div class="container t-small-margin">
+        
+<h1 class="font-18 v-big-margin no-padding-v">Javascript/HTML压缩、格式化</h1>
+
+    <!--  start 各个模块代码 -->
+             <div class="editor-box2">
+        <!-- json编辑器 -->
+        <div id="editor">
+            <textarea id="code"></textarea>
+            <div id="resize">
+                <i class="icon-bars"></i>
+            </div>
+        </div>
+    </div>
+    <!-- 功能 -->
+    <div class="t-huge2-margin">
+        <div class="btn-group" role="group" aria-label="...">
+            <button id="sels" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                制表符缩进<span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" id="jshtmlFormatTab">
+                <li><a href="javascript:;" data-tab="1">1个空格缩进</a></li>
+                <li><a href="javascript:;" data-tab="2">2个空格缩进</a></li>
+                <li><a href="javascript:;" data-tab="4">4个空格缩进</a></li>
+                <li><a href="javascript:;" data-tab="8">8个空格缩进</a></li>
+            </ul>
+            <button type="button" class="btn btn-primary"
+                    id="jshtmlFormatBeautify">格式化
+            </button>
+            <button type="button" class="btn btn-primary" id="hshtmlFormat">普通压缩</button>
+            <button type="button" class="btn btn-primary" id="jshtmlCopty">加密压缩</button>
+            <button type="button" class="btn btn-primary" id="hshtmlHjs">JS/HTML互转</button>
+            <button type="button" class="btn" id="clearCode">清空结果</button>
+            <button type="button" class="btn" id="downloadEditor" data-suffix="js">保存本地</button>
+            <button type="button" class="btn" id="copyJson">复制</button>
+        </div>
+    </div>
+    <div class="t-big-margin"><script>jiazai_dag_all('INDEX_PC_HENGFU')</script></div>
+    <input type="hidden" id="tabsize" value="1"/>
+    <!--  end各个模块代码 --> 
+           
+     <!-- 工具导航 -->
+</div>
+<div class="xf-window" style="display:block;">
+    <!-- <div class="xf-wxewm" id="showQrcode">
+         <i class="icon icon-qrcode"></i>
+         <div class="xf-qrcode" id="wxQrcode">
+             <p>用微信扫一扫</p>
+             <img src="static/bejson/img/qrcode.jpg" width="150">
+         </div>
+     </div>-->
+
+<div class="xf-totop" id="goTop">
+    <i class="icon icon-caret-up"></i>
+</div>
+</div>
+<!-- 导航对话框 -->
+<div class="modal fade" id="navModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span
+                        class="sr-only">关闭</span></button>
+                <h4 class="modal-title">BeJSON网站导航</h4>
+            </div>
+            <div class="modal-body">
+
+                               <div class="modal-nav">
+                    <h3>JSON工具</h3>
+                    <ul>
+
+						
+						                        <li><a href="/json/format/" class="text-danger" target="_blank">格式化校验</a></li>
+						                        <li><a href="/jsonviewernew/" class="" target="_blank">JSON视图</a></li>
+						                        <li><a href="/zhuanyi/" class="" target="_blank">JSON压缩转义</a></li>
+						                        <li><a href="/json2javapojo/new/" class="" target="_blank">JSON生成Java实体类</a></li>
+						                        <li><a href="/convert/json2csharp/" class="" target="_blank">JSON转C#实体类</a></li>
+						                        <li><a href="/jsoneditoronline/" class="" target="_blank">JSON在线编辑器</a></li>
+						                        <li><a href="/json/jsonsort/" class="" target="_blank">JSON排序</a></li>
+						                        <li><a href="/color/" class="" target="_blank">JSON着色</a></li>
+						                        <li><a href="/xml2json/" class="" target="_blank">XML-JSON互转</a></li>
+						                        <li><a href="/jsontools/json2get/" class="" target="_blank">JSON和GET请求字符串互转</a></li>
+						                        <li><a href="/json/col2json/" class="" target="_blank">Excel转Json</a></li>
+						                        <li><a href="/json/json2excel/" class="" target="_blank">JSON转csv、excel</a></li>
+						                        <li><a href="/json/json2yaml/" class="" target="_blank">在线JSON转yaml,yaml转JSON</a></li>
+						                        <li><a href="/explore/index_new/" class="" target="_blank">JSON校验格式化工具(新)</a></li>
+						                        <li><a href="/jsontool/jsonzhuandart/" class="" target="_blank">JSON转dart</a></li>
+						                        <li><a href="/jsontool/jsonzhuansql/" class="" target="_blank">JSON转sql</a></li>
+						                    </ul>
+                </div>
+						                <div class="modal-nav">
+                    <h3>编码/加密</h3>
+                    <ul>
+
+						
+						                        <li><a href="/enc/base64/" class="" target="_blank">Base64加密、解密</a></li>
+						                        <li><a href="/enc/md5/" class="" target="_blank">MD5加密</a></li>
+						                        <li><a href="/enc/md5dsc/" class="" target="_blank">MD5解密</a></li>
+						                        <li><a href="/enc/aesdes/" class="" target="_blank">DES,AES等对称加密解密</a></li>
+						                        <li><a href="/enc/rsa/" class="" target="_blank">RSA,RSA2公钥私钥加密解密</a></li>
+						                        <li><a href="/enc/sha/" class="" target="_blank">SHA加密</a></li>
+						                        <li><a href="/enc/escape/" class="" target="_blank">Escape编码</a></li>
+						                        <li><a href="/enc/urlencode/" class="" target="_blank">URL编码</a></li>
+						                        <li><a href="/enc/eval_package/" class="" target="_blank">Javascript Eval加密解密</a></li>
+						                        <li><a href="/encrypt/jsobfuscate/" class="" target="_blank">Javascript加密混淆</a></li>
+						                        <li><a href="/enc/morse/" class="" target="_blank">摩斯密码加密解密</a></li>
+						                        <li><a href="/convert/unicode_chinese/" class="" target="_blank">unicode中文互转</a></li>
+						                    </ul>
+                </div>
+						                <div class="modal-nav">
+                    <h3>格式化</h3>
+                    <ul>
+
+						
+						                        <li><a href="/jshtml_format/" class="text-danger" target="_blank">Javascript/HTML压缩、格式化</a></li>
+						                        <li><a href="/otherformat/css/" class="" target="_blank">CSS压缩、格式化</a></li>
+						                        <li><a href="/otherformat/xmlsort/" class="" target="_blank">XML排序、压缩、格式化</a></li>
+						                        <li><a href="/otherformat/sql/" class="" target="_blank">SQL压缩、格式化</a></li>
+						                    </ul>
+                </div>
+						                <div class="modal-nav">
+                    <h3>网络</h3>
+                    <ul>
+
+						
+						                        <li><a href="/network/profession_request_tools/" class="" target="_blank">模拟HTTP请求工具</a></li>
+						                        <li><a href="/httputil/websocket/" class="" target="_blank">在线模拟websocket请求工具</a></li>
+						                        <li><a href="/httputil/getip/" class="" target="_blank">获取你的IP</a></li>
+						                        <li><a href="/httputil/queryip/" class="" target="_blank">获取IP信息</a></li>
+						                        <li><a href="/httputil/ip2addr/" class="" target="_blank">IP定位周边信息</a></li>
+						                        <li><a href="/httputil/clientinfo/" class="" target="_blank">获取您的浏览器信息</a></li>
+						                        <li><a href="/httputil/useragent/" class="" target="_blank">常用USER_AGENT</a></li>
+						                        <li><a href="/convert/ip2int/" class="" target="_blank">IP转数字,数字转IP</a></li>
+						                        <li><a href="/convert/subnetmask/" class="" target="_blank">TCP/IP子网掩码计算换算</a></li>
+						                        <li><a href="/network/newsubnetmask/" class="" target="_blank">子网掩码换算(新)</a></li>
+						                        <li><a href="/httputil/cipher_suites/" class="" target="_blank">SSL协议套件探测</a></li>
+						                    </ul>
+                </div>
+						                <div class="modal-nav">
+                    <h3>前端</h3>
+                    <ul>
+
+						
+						                        <li><a href="/ui/tuchuang/" class="" target="_blank">图床</a></li>
+						                        <li><a href="/convert/gif2frame/" class="" target="_blank">在线GIF转成帧</a></li>
+						                        <li><a href="/convert/html_js/" class="" target="_blank">在线html转js,js转html</a></li>
+						                        <li><a href="/ui/fontawesome/" class="" target="_blank">fontawesome图标在线查询</a></li>
+						                        <li><a href="/othertools/keycodes/" class="" target="_blank">在线获取键盘按键值(keycode,ascii码)</a></li>
+						                        <li><a href="/convert/str2img/" class="" target="_blank">字符生成线条字</a></li>
+						                        <li><a href="/ui/compress_img/" class="" target="_blank">图片压缩工具</a></li>
+						                        <li><a href="/ui/gen_player/" class="" target="_blank">生成音乐播放器</a></li>
+						                        <li><a href="/ui/photoshop/" class="" target="_blank">在线photoshop</a></li>
+						                        <li><a href="/pages/cooleditor/" class="" target="_blank">在线代码编辑器</a></li>
+						                        <li><a href="/ui/borderradius/" class="" target="_blank">在线生成圆角</a></li>
+						                        <li><a href="https://h5.bce.baidu.com/store/" class="" target="_blank">H5模板在线制作</a></li>
+						                        <li><a href="/ui/icomaker/" class="" target="_blank">ICO图标在线生成转换工具</a></li>
+						                        <li><a href="/ui/create_logo/" class="" target="_blank">IOS安卓logo在线生成器</a></li>
+						                        <li><a href="/ui/ueditor/" class="" target="_blank">ueditor在线代码编辑器</a></li>
+						                        <li><a href="/ui/runjs/" class="" target="_blank">RunJS在线编辑器</a></li>
+						                        <li><a href="/ui/safecolor/" class="" target="_blank">WEB安全色</a></li>
+						                        <li><a href="/ui/getcolor/" class="" target="_blank">在线调色板</a></li>
+						                        <li><a href="/ui/imagehandler/" class="" target="_blank">在线图片大小格式(支持webp)转换</a></li>
+						                        <li><a href="/ui/image2base64/" class="" target="_blank">在线图片转Base64编码</a></li>
+						                        <li><a href="https://www.iconfont.cn/plus/collections/index/" class="" target="_blank">阿里巴巴矢量图标库</a></li>
+						                        <li><a href="/ui/phonesize/" class="" target="_blank">iPhone/iPad/Android UI尺寸规范</a></li>
+						                        <li><a href="/ui/svg_editor/" class="" target="_blank">SVG代码编辑预览</a></li>
+						                        <li><a href="https://fontawesome.com/icons?from=io/" class="" target="_blank">fontawesome矢量图标库</a></li>
+						                        <li><a href="/ui/openweb/" class="" target="_blank">弹出窗口生成器</a></li>
+						                        <li><a href="/othertools/libcdn/" class="" target="_blank">常用js库</a></li>
+						                        <li><a href="/ui/texteditor/" class="" target="_blank">在线自动排版工具</a></li>
+						                    </ul>
+                </div>
+						                <div class="modal-nav">
+                    <h3>后端</h3>
+                    <ul>
+
+						
+						                        <li><a href="/json2javapojo/new/" class="" target="_blank">JSON生成Java实体类</a></li>
+						                        <li><a href="https://java.bejson.com/generator/" class="" target="_blank">SQL生成Java代码</a></li>
+						                        <li><a href="/convert/sql2csharp/" class="" target="_blank">JSON转C#实体类</a></li>
+						                        <li><a href="/devtools/sql2pojo/" class="" target="_blank">mysql转Java实体类</a></li>
+						                        <li><a href="/devtools/sql2csharppojo/" class="" target="_blank">SQL转CSharp实体类</a></li>
+						                        <li><a href="/othertools/sql2pojo/" class="" target="_blank">oracle转Java实体类</a></li>
+						                        <li><a href="/devtools/sqlview/" class="" target="_blank">数据库插入、修改语句字段视图</a></li>
+						                        <li><a href="/devtools/properties2yaml/" class="" target="_blank">properties转yaml</a></li>
+						                        <li><a href="/validators/yaml_editor/" class="" target="_blank">YAML、YML在线编辑(校验)器</a></li>
+						                        <li><a href="/runcode/assembly/" class="" target="_blank">Assembly在线运行</a></li>
+						                        <li><a href="/runcode/bash/" class="" target="_blank">Bash在线运行</a></li>
+						                        <li><a href="/runcode/basic/" class="" target="_blank">Basic在线运行</a></li>
+						                        <li><a href="/runcode/c701/" class="" target="_blank">C语言在线运行(Clang 7.0.1)</a></li>
+						                        <li><a href="/runcode/c740/" class="" target="_blank">C语言在线运行</a></li>
+						                        <li><a href="/runcode/c830/" class="" target="_blank">C语言在线运行(GCC 8.3.0)</a></li>
+						                        <li><a href="/runcode/c920/" class="" target="_blank">C语言在线运行(GCC 9.2.0)</a></li>
+						                        <li><a href="/runcode/clojure/" class="" target="_blank">Clojure在线运行</a></li>
+						                        <li><a href="/runcode/cobol/" class="" target="_blank">COBOL在线运行</a></li>
+						                        <li><a href="/runcode/commonlisp/" class="" target="_blank">Common Lisp在线运行</a></li>
+						                        <li><a href="/runcode/cpp701/" class="" target="_blank">C++在线运行(Clang 7.0.1)</a></li>
+						                        <li><a href="/runcode/cpp740/" class="" target="_blank">C++在线运行(GCC 7.4.0)</a></li>
+						                        <li><a href="/runcode/cpp830/" class="" target="_blank">C++在线运行(GCC 8.3.0)</a></li>
+						                        <li><a href="/runcode/cpp920/" class="" target="_blank">C++在线运行(GCC 9.2.0)</a></li>
+						                        <li><a href="/runcode/csharp/" class="" target="_blank">C#在线运行</a></li>
+						                        <li><a href="/runcode/d/" class="" target="_blank">D在线运行</a></li>
+						                        <li><a href="/runcode/elixir/" class="" target="_blank">Elixir在线运行</a></li>
+						                        <li><a href="/runcode/erlang/" class="" target="_blank">Erlang在线运行</a></li>
+						                        <li><a href="/runcode/executable/" class="" target="_blank">Executable在线运行</a></li>
+						                        <li><a href="/runcode/fortran/" class="" target="_blank">Fortran在线运行</a></li>
+						                        <li><a href="/runcode/fsharp/" class="" target="_blank">F#在线运行</a></li>
+						                        <li><a href="/runcode/golang/" class="" target="_blank">Go在线运行</a></li>
+						                        <li><a href="/runcode/groovy/" class="" target="_blank">Groovy在线运行</a></li>
+						                        <li><a href="/runcode/haskell/" class="" target="_blank">Haskell在线运行</a></li>
+						                        <li><a href="/runcode/java/" class="" target="_blank">Java在线运行</a></li>
+						                        <li><a href="/runcode/javascript/" class="" target="_blank">JavaScript在线运行</a></li>
+						                        <li><a href="/runcode/kotlin/" class="" target="_blank">Kotlin在线运行</a></li>
+						                        <li><a href="/runcode/lua/" class="" target="_blank">Lua在线运行</a></li>
+						                        <li><a href="/runcode/object_c/" class="" target="_blank">Objective-C在线运行</a></li>
+						                        <li><a href="/runcode/ocaml/" class="" target="_blank">OCaml在线运行</a></li>
+						                        <li><a href="/runcode/octave/" class="" target="_blank">Octave在线运行</a></li>
+						                        <li><a href="/runcode/pascal/" class="" target="_blank">Pascal在线运行</a></li>
+						                        <li><a href="/runcode/perl/" class="" target="_blank">Perl在线运行</a></li>
+						                        <li><a href="/runcode/php/" class="" target="_blank">PHP在线运行</a></li>
+						                        <li><a href="/runcode/plain/" class="" target="_blank">Plain Text在线运行</a></li>
+						                        <li><a href="/runcode/prolog/" class="" target="_blank">Prolog在线运行</a></li>
+						                        <li><a href="/runcode/python/" class="" target="_blank">Python在线运行(2.7.17)</a></li>
+						                        <li><a href="/runcode/python3/" class="" target="_blank">Python在线运行(3.8.1)</a></li>
+						                        <li><a href="/runcode/r/" class="" target="_blank">R在线运行</a></li>
+						                        <li><a href="/runcode/ruby/" class="" target="_blank">Ruby在线运行</a></li>
+						                        <li><a href="/runcode/rust/" class="" target="_blank">Rust在线运行</a></li>
+						                        <li><a href="/runcode/scala/" class="" target="_blank">Scala在线运行</a></li>
+						                        <li><a href="/runcode/sql/" class="" target="_blank">SQL在线运行</a></li>
+						                        <li><a href="/runcode/swift/" class="" target="_blank">Swift在线运行</a></li>
+						                        <li><a href="/runcode/typescript/" class="" target="_blank">TypeScript在线运行</a></li>
+						                        <li><a href="/runcode/vbscript/" class="" target="_blank">Visual Basic.Net在线运行</a></li>
+						                    </ul>
+                </div>
+						                <div class="modal-nav">
+                    <h3>转换</h3>
+                    <ul>
+
+						
+						                        <li><a href="/convert/html_string/" class="" target="_blank">字符串拼接（多语言）</a></li>
+						                        <li><a href="/convert/camel_underscore/" class="" target="_blank">驼峰转下划线，下划线转驼峰</a></li>
+						                        <li><a href="/convert/html_js/" class="" target="_blank">在线html转js，js转html</a></li>
+						                        <li><a href="/convert/ueditor2markdown/" class="" target="_blank">在线ueditor富文本编辑器转markdown语法</a></li>
+						                        <li><a href="/convert/deserialize/" class="" target="_blank">PHP反序列化成JSON和代码</a></li>
+						                        <li><a href="/ui/imagehandler/" class="" target="_blank">在线图片大小格式(支持webp)转换</a></li>
+						                        <li><a href="/convert/image_to_svg/" class="" target="_blank">jpg，png图片在线转svg</a></li>
+						                        <li><a href="/convert/map/" class="" target="_blank">在线地图经纬度定位换算</a></li>
+						                        <li><a href="/ui/px2em/" class="" target="_blank">px转em，em转px</a></li>
+						                        <li><a href="/ui/image2base64/" class="" target="_blank">在线图片转Base64编码</a></li>
+						                        <li><a href="/convert/unicode_chinese/" class="" target="_blank">unicode中文互转</a></li>
+						                        <li><a href="/convert/shorturl/" class="" target="_blank">在线短地址互转</a></li>
+						                        <li><a href="/convert/unix/" class="" target="_blank">Unix时间互转（日期转毫秒）</a></li>
+						                        <li><a href="/convert/jinzhi/" class="" target="_blank">进制转换</a></li>
+						                        <li><a href="/convert/ox2str/" class="" target="_blank">16进制到文本字符串</a></li>
+						                        <li><a href="/convert/uplowercase/" class="" target="_blank">字母大小写转换</a></li>
+						                        <li><a href="/convert/rgbhex/" class="" target="_blank">RGB原色和HEX16互转</a></li>
+						                        <li><a href="/convert/file2pdf/" class="" target="_blank">在线文档转PDF</a></li>
+						                        <li><a href="/convert/qrcode/" class="" target="_blank">二维码生成和解码</a></li>
+						                        <li><a href="/convert/numtohz/" class="" target="_blank">数字转中文（人民币）</a></li>
+						                        <li><a href="/convert/filesize/" class="" target="_blank">在线文件大小换算</a></li>
+						                        <li><a href="/convert/nativeascii/" class="" target="_blank">NATIVE/ASCII在线转换工具</a></li>
+						                        <li><a href="/convert/htmlubb/" class="" target="_blank">Html与UBB代码互相转换工具</a></li>
+						                        <li><a href="/convert/topinying/" class="" target="_blank">汉字转换拼音</a></li>
+						                        <li><a href="/convert/fullhalf/" class="" target="_blank">全角半角转换</a></li>
+						                        <li><a href="/convert/j2f/" class="" target="_blank">简繁体火星文互转</a></li>
+						                        <li><a href="/convert/html2markdown/" class="" target="_blank">Html转换为MarkDown工具</a></li>
+						                        <li><a href="/convert/video2audio/" class="text-danger" target="_blank">视频秒转音频</a></li>
+						                    </ul>
+                </div>
+						                <div class="modal-nav">
+                    <h3>其他</h3>
+                    <ul>
+
+						
+						                        <li><a href="/othertools/compare/" class="" target="_blank">字符串数字对比</a></li>
+						                        <li><a href="/othertools/stringarraysort/" class="" target="_blank">字符串数组在线排序工具</a></li>
+						                        <li><a href="/othertools/regex/" class="" target="_blank">正则表达式测试</a></li>
+						                        <li><a href="/testtools/xpath/" class="" target="_blank">xpath测试</a></li>
+						                        <li><a href="/othertools/barcode/" class="" target="_blank">条形码生成器</a></li>
+						                        <li><a href="/othertools/keycodes/" class="" target="_blank">在线获取键盘按键值(keycode,ascii码)</a></li>
+						                        <li><a href="/othertools/cron/" class="" target="_blank">Cron表达式生成器</a></li>
+						                        <li><a href="/othertools/cronvalidate/" class="" target="_blank">Cron表达式校验工具</a></li>
+						                        <li><a href="/othertools/fanyi/" class="" target="_blank">中英互译</a></li>
+						                        <li><a href="/othertools/findelement/" class="" target="_blank">寻找图片、链接或xpath寻找元素</a></li>
+						                        <li><a href="/othertools/finddif3/" class="" target="_blank">文字对比找不同处</a></li>
+						                        <li><a href="/others/comparecode/" class="" target="_blank">在线代码对比/合并工具</a></li>
+						                        <li><a href="/othertools/regex_create/" class="" target="_blank">正则表达式代码生成工具</a></li>
+						                        <li><a href="/othertools/sqlAppend/" class="" target="_blank">SQL追加或去除双引号</a></li>
+						                        <li><a href="/othertools/removeDuplicate/" class="" target="_blank">去除重复字符串</a></li>
+						                        <li><a href="/othertools/sortwords/" class="" target="_blank">在线根据首字母排序</a></li>
+						                        <li><a href="/chargeservice/ocr/" class="" target="_blank">在线文字识别</a></li>
+						                        <li><a href="/other/qqskey/" class="" target="_blank">获取QQ的key</a></li>
+						                        <li><a href="/othertools/wordpress/" class="" target="_blank">在线查询WordPress主题模板出处</a></li>
+						                        <li><a href="/othertools/pic2weibo/" class="" target="_blank">根据微博图片寻找微博出处</a></li>
+						                        <li><a href="/othertools/ziponline/" class="" target="_blank">在线解压缩获取文件列表名</a></li>
+						                        <li><a href="/othertools/createaliweixinqrcode/" class="" target="_blank">支付宝、微信收款码共存</a></li>
+						                        <li><a href="/other/music/" class="" target="_blank">轻音乐</a></li>
+						                        <li><a href="/other/textbyte/" class="" target="_blank">文本字数统计、字符串字节数计算-BeJSON.com</a></li>
+						                    </ul>
+                </div>
+						                <div class="modal-nav">
+                    <h3>文档</h3>
+                    <ul>
+
+						
+						                        <li><a href="/doc/layui/" class="" target="_blank">Layui - 经典开源模块化前端 UI 框架</a></li>
+						                        <li><a href="/doc/systemd/" class="" target="_blank">Systemd 入门教程：命令篇</a></li>
+						                        <li><a href="/apidoc/jquery/" class="" target="_blank">jQuery文档</a></li>
+						                        <li><a href="https://v3.bootcss.com/components/" class="" target="_blank">Bootstrap文档</a></li>
+						                        <li><a href="/doc/vuejs/" class="" target="_blank">VueJs文档</a></li>
+						                        <li><a href="/doc/openqq/" class="" target="_blank">腾讯开发平台</a></li>
+						                        <li><a href="/knownjson/aboutjsonp/" class="" target="_blank">什么是jsonp</a></li>
+						                        <li><a href="https://developers.weixin.qq.com/doc/offiaccount/Getting_Started/Overview.html/" class="" target="_blank">微信公众平台开发文档</a></li>
+						                        <li><a href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html/" class="" target="_blank">微信JSSDK开发文档</a></li>
+						                        <li><a href="/doc/payweixin/" class="" target="_blank">微信支付开发文档</a></li>
+						                        <li><a href="/doc/payweixinsl/" class="" target="_blank">微信支付服务商文档</a></li>
+						                        <li><a href="https://developers.weixin.qq.com/miniprogram/dev/api/" class="" target="_blank">微信小程序开发文档</a></li>
+						                        <li><a href="/doc/taobao/" class="" target="_blank">淘宝开发文档</a></li>
+						                        <li><a href="/doc/alipay/" class="" target="_blank">支付宝开发文档</a></li>
+						                        <li><a href="/doc/wisdomstores/" class="" target="_blank">支付宝智慧门店文档</a></li>
+						                        <li><a href="https://opendocs.alipay.com/open/399/" class="" target="_blank">支付宝开发商文档</a></li>
+						                        <li><a href="/doc/AndroidManifest/" class="" target="_blank">Android权限大全</a></li>
+						                        <li><a href="/knownjson/aboutjson/" class="" target="_blank">什么是JSON</a></li>
+						                        <li><a href="/knownjson/demo/" class="" target="_blank">举个栗子</a></li>
+						                        <li><a href="/knownjson/webInterface/" class="" target="_blank">JSON API免费接口</a></li>
+						                        <li><a href="/knownjson/regexJiaocheng/" class="" target="_blank">正则表达式30分钟入门教程</a></li>
+						                        <li><a href="/knownjson/httpstate/" class="" target="_blank">HTTP状态码查询</a></li>
+						                        <li><a href="/doc/httpcontent/" class="" target="_blank">HTTP Content对照表</a></li>
+						                        <li><a href="/doc/ascii/" class="" target="_blank">ASCII码对照表</a></li>
+						                        <li><a href="/doc/port/" class="" target="_blank">常用端口解释</a></li>
+						                    </ul>
+                </div>
+						                <div class="modal-nav">
+                    <h3>平台工具</h3>
+                    <ul>
+
+						
+						                        <li><a href="/tool/weixindebug/" class="" target="_blank">微信公众平台调试工具</a></li>
+						                        <li><a href="/tools/weixinpay/" class="" target="_blank">微信公众平台支付接口调试工具</a></li>
+						                        <li><a href="/tools/weixinpayjsapi/" class="" target="_blank">微信支付接口签名校验工具</a></li>
+						                        <li><a href="/tools/weixinmpcardsign/" class="" target="_blank">微信卡券JSAPI签名校验工具</a></li>
+						                        <li><a href="/tools/weixinmpjsapisign/" class="" target="_blank">微信 JS 接口签名校验工具</a></li>
+						                        <li><a href="/tools/weixinqydebug/" class="" target="_blank">微信企业号调试工具</a></li>
+						                        <li><a href="/tools/qqwebtools/" class="" target="_blank">QQ互联API调试工具</a></li>
+						                        <li><a href="/tools/taobaosessionPage/" class="" target="_blank">淘宝oauth2.0测试工具</a></li>
+						                        <li><a href="/tools/taobaoapitool/" class="" target="_blank">淘宝API测试工具</a></li>
+						                        <li><a href="/tools/taobaoerrorCodeSearch/" class="" target="_blank">淘宝错误码查询工具</a></li>
+						                        <li><a href="/tools/taobao/" class="" target="_blank">淘宝商品属性工具</a></li>
+						                        <li><a href="/tools/alipaycloudparse/" class="" target="_blank">支付宝联调日志排查</a></li>
+						                        <li><a href="https://openhome.alipay.com/platform/appDaily.htm?tab=info/" class="" target="_blank">支付宝API工具</a></li>
+						                        <li><a href="/tools/alipaytroubleshoot/" class="" target="_blank">开发者自助排查工具</a></li>
+						                        <li><a href="/tools/weiboapi/" class="" target="_blank">新浪微博API工具</a></li>
+						                    </ul>
+                </div>
+						                <div class="modal-nav">
+                    <h3>更多</h3>
+                    <ul>
+
+						
+						                        <li><a href="/knownjson/webInterface/" class="" target="_blank">免费JSON接口</a></li>
+						                        <li><a href="/tools/sitemap/" class="" target="_blank">sitemap提交入口大全</a></li>
+						                        <li><a href="/tools/beian/" class="" target="_blank">备案查询</a></li>
+						                        <li><a href="/soft/" class="" target="_blank">常用软件下载</a></li>
+						                        <li><a href="/other/blogs/" class="" target="_blank">Blogs</a></li>
+						                        <li><a href="/knownjson/msg/" class="" target="_blank">留言</a></li>
+						                        <li><a href="/other/whatisnew/" class="" target="_blank">更新日志</a></li>
+						                        <li><a href="/other/ads/" class="" target="_blank">广告招租</a></li>
+						                        <li><a href="/demo/sinaweather/" class="" target="_blank">新浪天气API接口测试用例</a></li>
+						                        <li><a href="/more/suijimimashengcheng/" class="" target="_blank">在线随机密码生成</a></li>
+						                    </ul>
+                </div>
+						                <div class="modal-nav">
+                    <h3>房贷计算器</h3>
+                    <ul>
+
+						
+						                        <li><a href="/mortgage/loans/" class="" target="_blank">商业贷款计算器</a></li>
+						                        <li><a href="/mortgage/purchaseability/" class="" target="_blank">购房能力评估计算器</a></li>
+						                        <li><a href="/mortgage/gjjloans/" class="" target="_blank">公积金贷款计算器</a></li>
+						                        <li><a href="/mortgage/zhloans/" class="" target="_blank">组合贷款计算器</a></li>
+						                        <li><a href="/mortgage/tqloans/" class="" target="_blank">提前还贷计算器</a></li>
+						                        <li><a href="/mortgage/hsloans/" class="" target="_blank">提前还款是否划算</a></li>
+						                        <li><a href="/mortgage/mtqloans/" class="" target="_blank">多次提前还贷计算器</a></li>
+						                        <li><a href="/mortgage/leftloans/" class="" target="_blank">剩余还款计算器</a></li>
+						                        <li><a href="/mortgage/newHouseTax/" class="" target="_blank">新房税费计算器</a></li>
+						                        <li><a href="/mortgage/proloans/" class="" target="_blank">公积金贷款额度查询</a></li>
+						                        <li><a href="/mortgage/rateloans/" class="" target="_blank">利率变动还款计算器</a></li>
+						                    </ul>
+                </div>
+						                <div class="modal-nav">
+                    <h3>车贷计算器</h3>
+                    <ul>
+
+						
+						                        <li><a href="/insurance/carInsurance/" class="" target="_blank">车险计算器</a></li>
+						                        <li><a href="/loans/carloans/" class="" target="_blank">车贷计算器</a></li>
+						                    </ul>
+                </div>
+						                <div class="modal-nav">
+                    <h3>利率计算器</h3>
+                    <ul>
+
+						
+						                        <li><a href="/interestrate/income/" class="" target="_blank">年化收益计算器</a></li>
+						                        <li><a href="/interestrate/interestConvert/" class="" target="_blank">年利率、月利率、日利率换算器</a></li>
+						                        <li><a href="/loans/mjloans/" class="" target="_blank">民间借贷计算器</a></li>
+						                        <li><a href="/loans/mjinterest/" class="" target="_blank">民间利率转换器</a></li>
+						                        <li><a href="/loans/usury/" class="" target="_blank">高利贷计算器</a></li>
+						                    </ul>
+                </div>
+						                <div class="modal-nav">
+                    <h3>反算计算器</h3>
+                    <ul>
+
+						
+						                        <li><a href="/inversion/checkloans/" class="" target="_blank">贷款、房贷查询计算器</a></li>
+						                        <li><a href="/inversion/reloans/" class="" target="_blank">房贷、贷款反算计算器</a></li>
+						                    </ul>
+                </div>
+						            </div>
+        </div>
+    </div>
+</div>
+<!--导航qq群-->
+<div class="modal fade" id="navQq" >
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span
+                        class="sr-only">关闭</span></button>
+                <h4 class="modal-title">BeJSON交流QQ群</h4>
+            </div>
+            <div class="modal-body" id="modalQQ">
+            </div>
+        </div>
+    </div>
+</div>
+<script src="static/bejson/js/global.min.js?v=20200630" type="text/javascript" charset="utf-8"></script>
+<script src="static/bejson/js/lzma.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+
+    //添加qq列表
+    createQQlist('static/bejson/img/qq/');
+    //菜单active
+    $('.grade-li.grade-li-active').parents('li.dropdown').addClass('active');
+
+    //初始化最近使用功能
+    recordRecentUse('Javascript/HTML压缩、格式化', '/jshtml_format');  
+    recentUseList();
+
+</script>
+
+
+<script>
+    if(!window.localStorage.getItem('shuangshi_bejson1105')) {
+        window.localStorage.setItem("shuangshi_bejson1105",(new Date()).getTime());
+        $('#shuangshi1Modal1').modal('show', 'center');
+    }else{
+	    // 双十一必须弹窗
+        var nowtime = new Date().getTime();
+        if(!window.localStorage.getItem("shuangshi_bejson1111") && nowtime > 1636560000000 && nowtime < 1638287999934)
+        {
+            window.localStorage.setItem("shuangshi_bejson1111", (new Date()).getTime());
+            $('#shuangshi1Modal1').modal('show', 'center');
+        }
+		
+		// 双十一前 每日一弹
+        var lasttime =  window.localStorage.getItem('shuangshi_bejson1105');
+        var nowtime = new Date().getTime();
+		var nowday = new Date().getDate();
+		
+		function getLocalDay(nS) {     
+			return new Date(parseInt(nS)).getDate();     
+		} 
+		
+		var lastDay = getLocalDay(lasttime);
+
+        if(lastDay != nowday && nowtime < 1638287999934){
+            window.localStorage.setItem("shuangshi_bejson1105",(new Date()).getTime());
+            $('#shuangshi1Modal1').modal('show', 'center');
+        }
+		 
+    }
+    // 倒计时
+    var _ordertimer = null;
+    function leftTimer(enddate, dom) {
+        if (!dom || !dom.length) {return}
+
+        var leftTime = enddate - new Date().getTime(); //计算剩余的毫秒数
+        var days = parseInt(leftTime / 1000 / 60 / 60 / 24, 10); //计算剩余的天数
+        var hours = parseInt(leftTime / 1000 / 60 / 60 % 24, 10); //计算剩余的小时
+        var minutes = parseInt(leftTime / 1000 / 60 % 60, 10);//计算剩余的分钟
+        var seconds = parseInt(leftTime / 1000 % 60, 10);//计算剩余的秒数
+        days = checkLeftTime(days);
+        hours = checkLeftTime(hours);
+        minutes = checkLeftTime(minutes);
+        seconds = checkLeftTime(seconds);
+        if (days >= 0 || hours >= 0 || minutes >= 0 || seconds >= 0)
+            for(var i = 0;i < dom.length; i++){
+                dom[i].innerHTML = days + "天" + hours + "小时" + minutes + "分" + seconds + "秒"
+            };
+        if (days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 0) {
+            window.clearInterval(_ordertimer);
+            _ordertimer = null;
+        }
+    }
+    function checkLeftTime(i) { //将0-9的数字前面加上0，例1变为01
+        if (i < 10) {
+            i = "0" + i;
+        }
+        return i;
+    }
+    function leftTimeStart(v, dom){
+        var date1=new Date().getTime();
+        v = v * 1000;
+        if(v<date1) return;//设置的时间小于现在时间退出
+        _ordertimer = setInterval(function(){leftTimer(v, dom)}, 1000);
+    }
+
+   // leftTimeStart(1636646399, document.querySelectorAll('.aliLeftTime'))
+</script>
+<script src="static/bejson/js/indexCodeMirror.min.js" type="text/javascript" charset="utf-8"></script>
+<!-- 判断json正确与否组件 -->
+<script src="static/bejson/js/jsonlint.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="static/bejson/js/component/jshtml_format/base.js" type="text/javascript"></script>
+<script src="static/bejson/js/component/jshtml_format/jsformat.js" type="text/javascript"></script>
+<script src="static/bejson/js/component/jshtml_format/htmlformat.js" type="text/javascript"></script>
+<script src="static/bejson/js/FileSaver.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    //根据DOM元素的id构造出一个编辑器================================================================================================================================================================================================
+    var editor = CodeMirror.fromTextArea(document.getElementById('code'), {
+        mode: 'application/json', //设置json模式
+        lineNumbers: true, //是否显示左边换行术字
+        lineWrapping: true, //是否折叠
+        foldGutter: true,
+        gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter']
+    });
+
+    if ($.zui.store.get('evalpackageCon')) {
+        editor.setValue($.zui.store.get('evalpackageCon'));
+    }
+
+</script>
+</body></html>

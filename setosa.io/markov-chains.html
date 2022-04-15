@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Markov Chains</title>
+    <link rel="alternate" type="application/rss+xml" title="Setosa blog" href="http://setosa.io/blog/feed.xml">
+    <!-- syntax highlighting CSS -->
+    <link rel="stylesheet" href="ev/styles/syntax.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="ev/styles/main.css">
+    <link href='http://fonts.googleapis.com/css?family=Lato:100|Open+Sans' rel='stylesheet' type='text/css'>
+
+    <script src="ev/scripts/d3.min.js"></script>
+
+</head>
+
+<body>
+    <div class="site">
+
+
+<div class="title-area">
+  <h2 class="post-title title">马尔科夫链</h2>
+  <h3 class="post-author">
+    
+      可视化解析
+    
+    
+     
+    
+  </h3>
+  
+    <h4>
+      
+     
+      
+    </h4>
+  
+</div>
+<!-- <p class="meta">26 Jul 2014</p> -->
+
+<div class="post">
+<p>马尔科夫链是以<a href="https://baike.baidu.com/item/%E5%AE%89%E5%BE%B7%E9%9B%B7%C2%B7%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB">安德烈-马尔科夫</a>命名的，它是一种数学系统，可以从一个 "状态"（一种情况或一组数值）跳到另一个。例如，如果你做了一个婴儿行为的马尔可夫链模型，你可能会把 "玩耍"、"吃饭"、"睡觉 "和 "哭闹 "作为状态，它们与其他行为一起构成一个 "状态空间"：所有可能状态的列表。此外，在状态空间的基础上，马尔可夫链告诉你从一个状态跳到其他状态的概率，或者说 "过渡"，例如，一个正在玩耍的婴儿在接下来的五分钟内不哭就睡着的概率。</p>
+
+<p>一个简单的双状态马尔可夫链如下所示。</p>
+
+<iframe scrolling="no" style="display: block; float: left;" width="100%" height="230" src="ev/markov/Markov Chains.html"></iframe>
+
+<p>在我们的状态空间中有两个状态（A和B），有4种可能的转换（不是2，因为一个状态可以转换回自己）。如果我们在 "A"，我们可以过渡到 "B "或停留在 "A"。如果我们在'B'，我们可以过渡到'A'或停留在'B'。在这个双状态图中，从任何状态过渡到任何其他状态的概率是0.5。</p>
+
+<p>当然，真正的建模者并不总是画出马尔科夫链图。相反，他们使用一个 "过渡矩阵 "来统计过渡概率。状态空间中的每个状态都作为行和列被包含一次，矩阵中的每个单元格告诉你从其行的状态过渡到其列的状态的概率。因此，在矩阵中，单元格的作用与图表中箭头的作用相同。</p>
+
+<iframe scrolling="no" style="display: block; float: left;" width="100%" height="230" src="ev/markov/transition-matrix.html#%7B%22tm%22%3A%5B%5B0.5%2C0.5%5D%2C%5B0.5%2C0.5%5D%5D%7D"></iframe>
+
+<p>如果状态空间增加了一个状态，我们就会增加一行和一列，在现有的每一列和每一行上增加一个单元。这意味着当我们向马尔科夫链添加状态时，单元格的数量会呈四级增长。因此，一个过渡矩阵很快就能派上用场，除非你想画一个如同攀爬架一样的马尔科夫链图。</p>
+
+<p>马尔科夫链的一个用途是在计算机模拟中包含真实世界的现象。例如，我们可能想检查一个新的水坝多久会溢出来，这取决于连续下雨的天数。为了建立这个模型，我们从以下雨天（R）和晴天（S）的模式开始。</p>
+
+<iframe scrolling="no" style="display: block; float: left;" width="100%" height="100" src="ev/markov/random-sequence.html"></iframe>
+
+<p>模拟这种天气的一种方法是直接说 "有一半的日子是下雨的。因此，在我们的模拟中，每一天都有50%的机会下雨。" 这一规则将在模拟中产生以下序列。</p>
+
+<iframe scrolling="no" style="display: block; float: left;" width="100%" height="100" src="ev/markov/random-sequence-50-50.html"></iframe>
+
+<p>你是否注意到上面的序列看起来与原始的不太一样？第二个序列似乎是跳跃的，而第一个序列（真实数据）似乎有一种 "粘性"。在真实数据中，如果某天是晴天（S），那么第二天也更有可能是晴天。</p>
+
+<p>我们可以用一个双状态的马尔科夫链来模拟这种 "粘性"。当马尔科夫链处于状态 "R "时，它有0.9的概率留在原地，有0.1的概率离开到 "S "状态。同样，"S "状态有0.9的概率保持不变，有0.1的概率过渡到 "R "状态。</p>
+
+<iframe scrolling="no" style="overflow: hidden; display: block; float: left;" width="100%" height="240" src="ev/markov/random-sequence-markov.html"></iframe>
+
+<p>在计量学家、生态学家、计算机科学家、金融工程师和其他需要对大现象进行建模的人手中，马尔可夫链可以变得相当庞大和强大。例如，谷歌用于确定搜索结果顺序的算法，称为PageRank，就是一种马尔科夫链。</p>
+
+<iframe scrolling="no" class="playground" style="display: block; float: left;" width="100%" height="500" src="ev/markov/playground.html"></iframe>
+
+<p> 如上图，我们提供了一个马尔科夫链的 "Playground"，在那里你可以通过捣鼓一个过渡矩阵来制作你自己的马尔科夫链。这里有几个例子可以参考： <a href="javascript:update_playground('long')">例1</a>, <a href="javascript:update_playground('large')">例2</a>, <a href="javascript:update_playground('three')">例3</a> 或者直接新建一个 <a href="javascript:update_playground('random')">随机的</a>.如果提供的矩阵不是有效的过渡矩阵，过渡矩阵的文字将变成红色。过渡矩阵的行数必须合计为1，而且行数必须与列数相同。</p>
+
+<p>你也可以在 <a href="ev/markov/index.html">这里</a>全屏尝试</p>
+
+<script>
+function randomMatrix(){
+  var n = Math.floor(Math.random() * 9) + 1;
+  return d3.range(n).map(function() {
+    var row = d3.range(n).map(function(){ return 0; });
+    // place 100, '0.01' pieces into random `row` indices.
+    d3.range(10).forEach(function(d) {
+      row[Math.floor(Math.random() * n)] += 0.1;
+    });
+    row = row.map(function(d){ return Math.round(d * 10) / 10; });
+    return row;
+  });
+}
+function update_playground(type){
+  var matrix;
+  if (type === 'three')
+    matrix = [[0.3,0.3,0.4], [0.3,0.5,0.2], [0.4,0.4,0.2]];
+  else if (type === 'large')
+    matrix = [[0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1],
+             [0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1],
+             [0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1],
+             [0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1],
+             [0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1],
+             [0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1],
+             [0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1],
+             [0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1],
+             [0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1],
+             [0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1]];
+  else if(type === 'long')
+    matrix = [[0.6,0.2,0,0,0,0.2], [0.2,0.6,0.2,0,0,0],[0,0.2,0.6,0.2,0,0],
+     [0,0,0.2,0.6,0.2,0],[0,0,0,0.2,0.6,0.2],[0.2,0,0,0,0.2,0.6]];
+  else if(type === 'random')
+    matrix = randomMatrix();
+  var hash = { tm: matrix };
+  d3.select('.playground').attr('src', 'ev/markov/playground.html?'
+    + (+new Date()) + '#' + encodeURIComponent(JSON.stringify(hash, null, 2)));
+}
+update_playground('three');
+</script>
+
+</div>
+
+
+    </div>
+
+</body>
+<!-- fb code -->
+<script>
+(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=385171041519781";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+<script>
+(function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+    m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+ga('create', 'UA-11200159-16', 'setosa.io');
+ga('send', 'pageview');
+</script>
+
+</html>

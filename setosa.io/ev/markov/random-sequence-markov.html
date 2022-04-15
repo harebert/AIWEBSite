@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Markov Chains</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href="style.css" type="text/css" rel="stylesheet">
+    <script src="d3.min.js"></script>
+    <script src="vector.js"></script>
+    <script src="angular.min.js" charset="utf-8"></script>
+    <style>
+body, html {
+  overflow: hidden;
+}
+.st-diagram {
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+}
+.st-diagram .nodes {
+  pointer-events: all;
+}
+</style>
+</head>
+<body ng-app="myApp" ng-controller="MainCtrl">
+  <st-diagram center="diagramCenter" states="states"
+    transition-matrix="transitionMatrix" duration="duration"
+    state="state"
+    selected-transition="selected.transition"></st-diagram>
+  <div class="sequence" step-1="70%" step-2="60%"></div>
+  <div class="controls">
+    <input class="speedRange" type="range" ng-model="speedRange"
+      min="1" max="10" step="1">
+    <label> speed </label>
+  </div>
+</body>
+<script>
+
+var myApp = angular.module('myApp', []);
+
+myApp.controller('MainCtrl', function($scope, utils, $window) {
+  angular.element($window).on('resize', function() { $scope.$apply(); });
+  $scope.diagramCenter = [0.8, 0.5];
+  $scope.state = { current: null };
+  $scope.selected = { transition: null };
+  var labels = ['R', 'S'];
+  var color = d3.scale.category10();
+  $scope.states = labels.map(function(label, i) {
+    return { text: label, label: label, index: i, color: color(label) };
+  });
+  $scope.transitionMatrix = [
+    [0.9, 0.1],
+    [0.1, 0.9]
+  ];
+  $scope.duration = 1000;
+  $scope.speedRange = 2;
+  $scope.$watch('speedRange', function(speed) {
+    $scope.duration = 2000 / +speed;
+  });
+});
+
+</script>
+<script src="common.js" charset="utf-8"></script>
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=1100">
+<meta charset="utf-8">
+<script src="ev/scripts/d3.js" charset="utf-8"></script> 
+<script src="ev/scripts/angular.js" charset="utf-8"></script> 
+<script src="ev/scripts/common.js" charset="utf-8"></script>
+<link href="http://fonts.googleapis.com/css?family=Lato:100,200,300,400" rel="stylesheet" type="text/css">
+
+	
+	<link rel="stylesheet" href="ev/pca/nivo-slider.css" type="text/css">
+	
+	<link rel="stylesheet" href="ev/pca/lightbox.css" type="text/css">
+	
+	<script src="ev/pca/lightbox.js"></script>
+	
+	
+	
+	
+	<link rel="stylesheet" rev="stylesheet" href="ev/pca/bootstrap.css" type="text/css" media="all" />
+
+<link rel="stylesheet" rev="stylesheet" href="CSS/stylesheet.css" type="text/css" media="all" />
+
+
+<script type="text/javascript" src="ev/pca/jquery-1.7.1.min.js"></script>
+
+<script src="ev/pca/bootstrap.js"></script>
+
+	
+<link rel="stylesheet" href="ev/styles/style.css" type="text/css">	
+	
+	
+	
+	<script type="text/javascript" src="chrome-extension://dbjbempljhcmhlfpfacalomonjpalpko/scripts/inspector.js"></script>
+	<script src="chrome-extension://mooikfkahbdckldjjndioackbalphokd/assets/prompt.js"></script>
+<meta property="og:site_name" content="Explained Visually">
+<meta name="twitter:site" content="@setosaio">
+<meta property="og:image" content="/ev/principal-component-analysis/fb-thumb.png">
+<meta property="og:title" content="Principal Component Analysis explained visually">
+<title>Principal Component Analysis 主成分分析</title>
+<meta name="twitter:creator" content="vicapow">
+<link rel="stylesheet" href="ev/pca/style.css" type="text/css">
+</head>
+	
+	<script language="javascript">
+function changeTab(tabName)
+{
+	//改变tab的颜色及下边框
+	 var i=0;
+	var tab= document.getElementsByClassName(tabName);//当前
+	tab.item(0).style.backgroundColor="#ffffff";	
+	tab.item(0).style.borderBottom="4px solid #ffffff";
+	tab.item(0).style.borderTop="4px solid #F00";
+	tab.item(0).style.borderLeft="4px solid #F00";
+	tab.item(0).style.borderRight="4px solid #F00";
+	tab.item(0).style.height="45px";
+	tab.item(0).style.marginTop="-15px";
+	tab.item(0).style.color="#000";
+	var tabNavItem=document.getElementsByName("tabNavItemName");
+		for (i=0;i<=tabNavItem.length-1;i++)
+		{//背后
+			if(tabNavItem.item(i).className!=tabName){
+				tabNavItem.item(i).style.backgroundColor="#FFF";
+				tabNavItem.item(i).style.height="30px";	
+				tabNavItem.item(i).style.marginTop="0";	
+				tabNavItem.item(i).style.borderBottom="0px solid #F00";
+				tabNavItem.item(i).style.borderTop="4px solid #CCC";
+				tabNavItem.item(i).style.borderLeft="2px solid #CCC";
+				tabNavItem.item(i).style.borderRight="2px solid #CCC";
+				tabNavItem.item(i).style.color="#CCC";
+			}
+		}
+		
+	//改变内容	
+	var others=document.getElementsByClassName("tabContent");
+	
+	 	for (i=0;i<=others.length;i++)
+		{
+			if(others.item(i).id!=tabName)
+			{
+				others.item(i).style.display="none";
+			}
+			else
+			{
+				others.item(i).style.display="inline";
+				others.item(i).style.backgroundColor="#ffffff";
+			}
+		}
+	 //class="tabContent"
+	//tabName.style.display="inline";
+	
+}
+
+$(document).ready(function(e) {
+	//模态框调用
+	$('#exampleModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var recipient = button.data('whatever') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  //modal.find('.modal-title').text('New message to ' + recipient)
+  //modal.find('.modal-body input').val(recipient)
+  modal.find('.modal-body video').attr("src",recipient);
+  //modal.find('.modal-body video').attr("autoplay","autoplay");
+  var video =$('video') ; //jQuery对象 
+	var vi=video [0]; //DOM对象
+  vi.play()
+});
+	
+	
+		$('#exampleModal').on('hide.bs.modal', function (event) {
+  			var video =$('video') ; //jQuery对象 
+			var vi=video [0]; //DOM对象
+  			vi.pause()
+});	
+		
+	var flagShow=[
+		function(){$(".headercontainer").animate({opacity:1},1000,runn);},
+		function(){$(".logo50").animate({opacity:1},1000,runn)},
+		function(){$("#c").animate({opacity:1},"slow",runn);},
+		function(){$("#e").animate({opacity:1},"slow",runn);},
+		function(){$("#f").animate({opacity:1},"slow",runn);},
+		function(){$("#g").animate({opacity:1},"slow",runn);},
+		function(){$("#j").animate({opacity:1},"slow",runn);},
+		function(){$("#s").animate({opacity:1},"slow",runn);},
+		function(){$("#r").animate({opacity:1},"slow",runn);}
+		
+	];
+	$(".headerbuttons").queue("thisQuere",flagShow);
+	
+	var runn=function(){
+	$(".headerbuttons").dequeue("thisQuere");
+	}
+	
+	runn();
+    
+	
+	//var thisCol=$(".col-sm-3")
+	//thisCol.css("marginTop",thisCol > img.attr("height"));
+	//alert($(".col-sm-3").children("img").height);
+	
+	$(".logo").load(function(e) {
+		$(this).parent().css("height","100%");
+		$(this).css("margin-top",$(this).parent().height()/2-this.height/2);
+    });
+	
+	
+	$('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+		  //e.target // activated tab
+		  
+		  //e.relatedTarget  // previous tab
+		  //$(e.relatedTarget).children("div").children("img").height()
+		 //$(".logo").load(function(e) {
+			//$(".logo").parent().css("height","100%");
+			//$(this).css("top","50%");
+			//$(e.target)
+			var targetContentDiv=$(e.target.getAttribute("href"))
+			targetContentDiv.children("div.col-sm-3").css("height","100%");
+			var nowMargin;
+			nowMargin=targetContentDiv.children("div.col-sm-3").height()/2-$(e.target).children("div.col-sm-3").children("img.logo").height()/2;
+			console.log(targetContentDiv);
+			targetContentDiv.children("div.col-sm-3").children("img.logo").css("marginTop",nowMargin);
+			//$(this).css("marginTop",$(this).parent().css("height")-this.height/2);
+			//alert(this.height);
+			//this.parent().css("top","100px");
+			//this.css("marginTop",-this.height()/2);
+    		//}
+			//);
+
+})
+	
+});
+
+
+</script>
+	
+	
+<body ng-app="myApp" ng-controller="MainCtrl">
+
+<section class="title">
+  <div class="title-region">
+    <h1 class="title">PCA主成分分析</h1>
+    <h3 class="by-line">可视化解析</h3>
+  </div>
+  <p>主成分分析（PCA）是一种用于强调变异和带出数据集中的强模式的技术。它经常被用来使数据易于探索和视觉化。</p>
+  <h1>二维数据例子</h1>
+  <p>首先，考虑一个只有两个维度的数据集，如（身高，体重）。这个数据集可以被绘制成平面上的点。但是，如果我们想挑出变化，PCA会找到一个新的坐标系，其中每一个点都有一个新的（x,y）值。这些坐标轴实际上并不代表任何物理意义；它们是被称为 "主成分 "的身高和体重的组合，被选择来为一个坐标轴提供大量的变化。 </p>
+  <p>在下面的可视化中拖动各点，看看PC坐标系的调整情况。</p>
+  <div style="text-align: center; width: 100%">
+    <pca-d2></pca-d2>
+  </div>
+  <div style="text-align: center; width: 100%">
+    <div style="width: 50%; float: left;padding: 0px 20px 0 20px; text-align: left">
+      <p>PCA对于降维是很有用的。下面，我们沿着一对线条绘制数据：一条由X值组成，另一条由Y值组成。</p>
+    </div>
+    <div style="width: 50%; float: left;padding: 0px 20px 0 20px;text-align: left">
+      <p> 不过，如果我们只看一个维度的数据，那么把这个维度作为变化最大的主成分可能更好。由于<span style="color:#2ecc71">PC2</span>对数据集的变化贡献最小，所以我们放弃<span style="color:#2ecc71">PC2</span>并没有什么损失。 </p>
+    </div>
+    <pca-d1></pca-d1>
+  </div>
+</section>
+<section>
+  <h1>三维数据例子</h1>
+  <P>对于三维空间，PCA更有用，因为很难看透一团数据。在下面的例子中，原始数据是以三维形式绘制的，但你可以通过与寻找相机角度无异的转换将数据投射到二维：即旋转轴来寻找最佳角度。要看到 "官方的"PCA变换，请点击 "Show PCA "按钮。PCA转换确保水平轴PC1的变化最大，垂直轴PC2的变化次之，而第三轴PC3的变化最小。很明显，PC3就是我们放弃的那个。</P>
+  <pca-three-plot rot="rotXY"></pca-three-plot>
+  <div style="text-align: center">
+    <button ng-click="showPCAThree()" class="btn">show PCA</button>
+    <button ng-click="resetPCAThree()" class="btn">reset</button>
+  </div>
+</section>
+<section>
+  <h1>舌尖上的英国 (一个 17维度的模型)</h1>
+  <div style="text-align: left; width: 40%; display: block; float: left; clear: both"><small>Original example from Mark Richardson's class notes <a href="ev/pca/SignalProcPCA.pdf">Principal Component Analysis</a></small>
+    <p> 如果我们的数据远远超过3维，怎么办？比如，<b>17</b>个维度？表中是英国每个国家每人每周17种食物的平均消费量，单位是克。</p>
+    <p> 该表显示了不同食物类型之间的一些有趣的变化，但总体差异并不明显。让我们看看PCA是否可以消除维度来强调各国的差异。 </p>
+  </div>
+  <div style="text-align: center; width: 60%; display: block; float: left">
+    <defra-table></defra-table>
+  </div>
+  <div style="clear:both"></div>
+  <p>这是沿第一主成分绘制的数据图。我们已经可以看到北爱尔兰的一些不同之处。</p>
+  <div style="text-align: center; width: 100%; display: block;">
+    <defra-d1></defra-d1>
+  </div>
+  <p>现在，看到第一和第二主成分，我们看到北爱尔兰是一个主要的异常点。一旦我们回头看看表中的数据，这就说得通了：北爱尔兰人吃的新鲜土豆的克数要多得多，而新鲜水果、奶酪、鱼和酒精饮料的克数要少得多。这是一个很好的迹象，我们可视化的结构反映了现实世界地理的一个重要事实。北爱尔兰是这四个国家中唯一不在大不列颠岛上的国家。(如果你对英格兰、英国和大不列颠之间的区别感到困惑，请参阅。<a href data-toggle="modal" data-target="#exampleModal" data-whatever="ev/pca/The Difference between the United Kingdom, Great Britain and England Explained.mp4"><span class="glyphicon glyphicon-film" aria-hidden="true"></span>这个视频</a>.)</p>
+  <br>
+  <br>
+  <div style="text-align: center; width: 100%; display: block;">
+    <defra-d2></defra-d2>
+  </div>
+  <br>
+  <br>
+</section>
+</body>
+<script type="x-shader/x-vertex" id="vertexshader">
+    // attribute vec3 color;
+    uniform float pointSize;
+    uniform vec3 color;
+    uniform float alpha;
+    uniform int shouldResize;
+    varying vec4 vColor;
+    void main() {
+      vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+      if (shouldResize == 1) {
+        gl_PointSize = pointSize * ( mvPosition.z + 30.0) / 10.0 + 10.0;
+        // gl_PointSize = pointSize;
+      } else {
+        gl_PointSize = pointSize;
+      }
+      gl_Position = projectionMatrix * mvPosition;
+      if (shouldResize == 1) {
+        vColor = vec4(color, ( mvPosition.z + 30.0) / 10.0 + 0.0);
+        // vColor = vec4(color, 0.8);
+      } else {
+        vColor = vec4(color, alpha);
+      }
+    }
+    
+  </script>
+<script type="x-shader/x-fragment" id="fragmentshader">
+    varying vec4 vColor;
+    void main() {
+      float f = 0.5;
+      // vec2 pos = mod(gl_FragCoord.xy, vec2(50.0)) - vec2(25.0);
+      float d = abs(distance(gl_PointCoord - f, vec2(0.0, 0.0) ) );
+      if(d < f) {
+        gl_FragColor = vColor;
+      } else {
+        discard;
+      }
+    }
+    
+    
+  </script>
+<script src="ev/pca/three.js" charset="utf-8"></script>
+<script src="ev/pca/OrthographicTrackballControls.js" charset="utf-8"></script>
+<script src="ev/pca/numeric.js" charset="utf-8"></script>
+<script src="ev/pca/script.js"></script>
+	
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">The Difference between the United Kingdom, Great Britain and England Explained</h4>
+      </div>
+      <div class="modal-body">
+        <video src="" width="100%" controls="controls"> your browser does not support the video tag </video>
+      </div>
+<!--
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+-->
+    </div>
+  </div>
+</div>
+	<div id="lightboxOverlay" class="lightboxOverlay" style="display: none;"></div>
+	<div id="lightbox" class="lightbox" style="display: none;"><div class="lb-outerContainer"><div class="lb-container"><img class="lb-image" src=""><div class="lb-nav"><a class="lb-prev" href=""></a><a class="lb-next" href=""></a></div><div class="lb-loader"><a class="lb-cancel"></a></div></div></div><div class="lb-dataContainer"><div class="lb-data"><div class="lb-details"><span class="lb-caption"></span><span class="lb-number"></span></div><div class="lb-closeContainer"><a class="lb-close"></a></div></div></div></div>
+	<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ccfjcepmiaackkccabgeeegeklgifffd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ccfjcepmiaackkccabgeeegeklgifffd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ccfjcepmiaackkccabgeeegeklgifffd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ccfjcepmiaackkccabgeeegeklgifffd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ccfjcepmiaackkccabgeeegeklgifffd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ccfjcepmiaackkccabgeeegeklgifffd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ccfjcepmiaackkccabgeeegeklgifffd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ccfjcepmiaackkccabgeeegeklgifffd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ccfjcepmiaackkccabgeeegeklgifffd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ccfjcepmiaackkccabgeeegeklgifffd/imgs/map/tip-arrow-top.png&quot;);"></div></div>
+</html>

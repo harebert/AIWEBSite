@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=1100">
+    <meta charset="utf-8">
+    <script src="ev/scripts/d3.js" charset="utf-8"></script>
+    <script src="ev/scripts/angular.js" charset="utf-8"></script>
+    <script src="ev/scripts/common.js" charset="utf-8"></script>
+    <link href="http://fonts.googleapis.com/css?family=Lato:100,200,300,400" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="ev/styles/style.css" type="text/css">
+    <meta property="og:site_name" content="Explained Visually">
+    <meta name="twitter:site" content="@setosaio">
+    <meta property="og:image" content="ev/image-kernels/fb-thumb.png">
+    <meta property="og:title" content="Image Kernels explained visually">
+    <title>Image Kernels explained visually</title>
+    <meta name="twitter:creator" content="vicapow">
+    <link rel="stylesheet" href="ev/image-kernels/style.css" type="text/css">
+  </head>
+  <body ng-app="myApp" ng-controller="MainCtrl">
+    
+    <section class="title">
+      <div class="title-region">
+        <h1 class="title">卷积与卷积核</h1>
+        <h3 class="by-line">动一动手，体验一下</h3>
+      </div>
+      <div class="share">
+<!--        <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fsetosa.io%2Fev%2Fimage-kernels%2F&amp;width=150&amp;height=24&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=true" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height: 20px; width: 150px" allowTransparency="true" class="fb-iframe"></iframe>-->
+        <script type="text/javascript">
+          !function(d,s,id) {
+            var js
+              , fjs = d.getElementsByTagName(s)[0]
+              , p = /^http:/.test(d.location) ? 'http' : 'https';
+            if(!d.getElementById(id)) {
+              js = d.createElement(s);
+              js.id = id;
+              js.src = p + '://platform.twitter.com/widgets.js';
+              fjs.parentNode.insertBefore(js,fjs);
+            }
+          }(document, 'script', 'twitter-wjs');
+          
+        </script>
+      </div>
+    </section>
+    <section>
+      <p>By <a href="http://twitter.com/vicapow">Victor Powell</a>
+      </p>
+      <p><p>卷积核是一个小矩阵，用于应用像你在Photoshop或Gimp中可能发现的效果，如模糊、锐化、勾勒或压印。它们也被用于机器学习的&#39;特征提取&#39;，一种确定图像最重要部分的技术。在这种情况下，这个过程被更普遍地称为 "卷积"。 (see: <a href="https://baike.baidu.com/item/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">卷积神经网络</a>.)</p>
+<p>为了了解它们是如何工作的，让我们从检查一张黑白图像开始。左边的矩阵包含数字，介于0和255之间，每个数字对应于冰墩墩图片中一个像素的亮度。 图片的每个像素已经被放大，以使其更容易看到；最后一张图片是&quot;真实&quot;尺寸。</p>
+
+      </p>
+      <p>
+        <image-as-matrix></image-as-matrix>
+      </p>
+      <p>让我们使用3X3的<b> {{selectedKernel}} </b>卷积核来对以上图形进行处理</p>
+      <p>
+        <div style="width: 100%; text-align: center">
+          <select ng-options="key as key for (key, value) in selectableKernels" ng-model="selectedKernel"></select>
+        </div>
+        <kernel-matrix></kernel-matrix>
+      </p>
+      <p><p>下面，对于左边图像中的每个3x3的像素块，我们用每个像素乘以内核的相应条目，然后取其总和。这个总和在右边的图像中成为一个新的像素。将鼠标悬停在任何一幅图像的一个像素上，可以看到其数值是如何计算的。</p>
+
+        <div style="position:relative">
+          <kernel-inspect></kernel-inspect>
+          <div style="display:block; position: absolute;top:360px; left: 450px">
+            <select ng-options="key as key for (key, value) in selectableKernels" ng-model="selectedKernel"></select>
+          </div>
+        </div><p>这个过程的一个微妙之处在于如何沿着图像的边缘进行处理。例如，输入图像的左上角只有三个相邻的像素。解决这个问题的一个方法是，在保持新图像大小不变的情况下，将原始图像的边缘值向外扩展一圈。在这个演示中，我们把这些值变成了黑色，从而忽略了这些值。</p>。
+<p>这里是一个可以自由定义的区域，你可以选择不同的卷积核矩阵，看看它们如何影响原始图像或建立你自己的卷积核。如果浏览器支持，你也可以上传你自己的图像。</p>
+
+        <div style="position:relative">
+          <div style="display: block; position:absolute; width: 260px;height:260px; top: 85px; left: 65px;">
+            <div style="display: block; width: 33.33%; height: 33.33%; float: left;" ng-repeat="(idx, val) in kernel track by $id(idx)">
+              <input style="width:100%;height: 100%;font-size: 20px;text-align:center" type="number" ng-model="kernel[idx]" min="-10" max="10" step="0.1" ng-change="modifiedKernel()">
+            </div>
+          </div>
+          <div style="display:block; position: absolute;top:360px; left: 145px">
+            <select ng-options="key as key for (key, value) in kernels" ng-model="selectedKernel"></select>
+          </div>
+          <kernel-playground></kernel-playground>
+        </div>
+      </p>
+      <p>
+        <div ng-show="selectedKernel === 'sharpen'"><p>The <strong>sharpen</strong> kernel emphasizes differences in adjacent pixel values. This makes the image look more vivid.</p>
+
+        </div>
+        <div ng-show="selectedKernel === 'blur'"><p>The <strong>blur</strong> kernel de-emphasizes differences in adjacent pixel values.</p>
+
+        </div>
+        <div ng-show="selectedKernel.indexOf('emboss') !== -1"><p>The <strong>emboss</strong> kernel (similar to the <strong>sobel</strong> kernel and sometimes referred to mean the same) givens the illusion of depth by emphasizing the differences of pixels in a given direction. In this case, in a direction along a line from the top left to the bottom right.</p>
+
+        </div>
+        <div ng-show="selectedKernel === 'identity'"><p>The <strong>indentity</strong> kernel leaves the image unchanged. How boring!</p>
+
+        </div>
+        <div ng-show="selectedKernel === 'custom'"><p>The <strong>custom</strong> kernel is whatever you make it.</p>
+
+        </div>
+        <div ng-show="selectedKernel.indexOf('sobel') !== -1"><p><strong>sobel</strong> kernels are used to show <em>only</em> the differences in adjacent pixel values in a particular direction.</p>
+
+        </div>
+        <div ng-show="selectedKernel === 'outline'"><p>An <strong>outline</strong> kernel (also called an &quot;edge&quot; kernel) is used to highlight large differences in pixel values. A pixel next to neighbor pixels with close to the same intensity will appear black in the new image while one next to neighbor pixels that differ strongly will appear white.</p>
+
+        </div>
+      
+
+      </p>
+    </section>
+
+   
+    <script type="text/javascript">
+/*      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      
+      ga('create', 'UA-11200159-16', 'setosa.io');
+      ga('send', 'pageview');*/
+    </script>
+    
+  </body>
+  <script src="ev/scripts/exif.js" charset="utf-8"></script>
+  <script src="ev/image-kernels/script.js"></script>
+</html>
