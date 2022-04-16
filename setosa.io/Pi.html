@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=1100">
+    <meta charset="utf-8">
+    <script src="ev/scripts/d3.js" charset="utf-8"></script>
+    <script src="ev/scripts/angular.js" charset="utf-8"></script>
+    <script src="ev/scripts/common.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="ev/styles/style.css" type="text/css">
+    <meta property="og:site_name" content="Explained Visually">
+    <meta name="twitter:site" content="@setosaio">
+    <meta property="og:image" content="/ev/pi/fb-thumb.png">
+    <meta property="og:title" content="Pi (π) explained visually">
+    <title>Pi (π) explained visually</title>
+    <meta name="twitter:creator" content="vicapow">
+    <link rel="stylesheet" href="ev/pi/style.css" type="text/css">
+  </head>
+  <body ng-app="myApp" ng-controller="MainCtrl">
+    <section class="menu"><a href="http://ai.sfls.cn/">Back</a></section>
+    <section class="title">
+      <div class="title-region">
+        <h1 class="title">Pi (π)</h1>
+        <h3 class="by-line">Explained Visually</h3>
+      </div>
+    </section>
+    <section>
+      <p>
+      </p>
+      <p>Before we define π, let's define a circle. A circle is a set of points that all lie an equal distance away from a single center point. The distance from the center point is called the
+        <evt label="radius"></evt>and the distance along the outer edge of the circle is called the
+        <evt label="circumference"></evt>. The
+        <evt label="diameter"></evt>is the thickness of the circle at its widest and is 2 times the
+        <evt label="radius"></evt>.
+      </p>
+		<p>在定义π之前，我们先定义一个圆。圆是一组从一个中心点出发，距离相等的点的集合。离中心点的距离被称为<evt label="半径"></evt>沿着圆的外缘的距离称为<evt label="周长"></evt>.<evt label="直径"></evt>是圆的最宽处的厚度，是2倍的<evt label="半径"></evt>.</p>
+      <circle-demo></circle-demo>
+    </section>
+    <section>
+      <p>π is the ratio of the 
+        <evt label="circumference"></evt>to the
+        <evt label="diameter"></evt>and this ratio holds true of all sizes of circles. Because of this, π is a constant and equal to approximately 3.14. But don't get hung up on the idea that the decimal number representation of 3.14 is somehow special or mystical. It could have instead been defined as the
+        <evt label="circumference"></evt>over the
+        <evt label="radius"></evt> and in fact, this might have made more sense. (see: <a href="http://www.tauday.com/">Tau Day</a>.)
+      </p>
+		
+		<p>π是指<evt label="周长"></evt>与<evt label="直径"></evt>的比率 这个比率适用于所有大小的圆。正因为如此，π是一个常数，大约等于3.14。但是，不要纠结于3.14的十进制数字表示法在某种程度上是特殊或神秘的。相反，它可以被定义为 <evt label="周长"></evt>除以2倍的<evt label="半径"></evt> 而且事实上，这可能更有意义。</p>
+    </section>
+    <section>
+      <pi-demo></pi-demo>wrap
+      <input type="range" min="0" max="1" step="0.01" ng-model="opts.fold">size
+      <input type="range" min="0.5" max="2" step="0.1" ng-model="opts.diameter">
+    </section>
+
+  </body>
+  <script src="ev/pi/script.js"></script>
+</html>
