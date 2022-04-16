@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=1100">
+    <meta charset="utf-8">
+    <script src="ev/scripts/d3.js" charset="utf-8"></script>
+    <script src="ev/scripts/angular.js" charset="utf-8"></script>
+    <script src="ev/scripts/common.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="ev/styles/style.css" type="text/css">
+    <meta property="og:site_name" content="Explained Visually">
+    <meta name="twitter:site" content="@setosaio">
+    <meta property="og:image" content="ev/sine-and-cosine/fb-thumb.png">
+    <meta property="og:title" content="Sine and Cosine explained visually">
+    <title>Sine and Cosine explained visually</title>
+    <meta name="twitter:creator" content="vicapow">
+    <link rel="stylesheet" href="ev/sine-and-cosine/style.css" type="text/css">
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [['$','$'], ['\\(','\\)']],
+          skipTags: ["script","noscript","style","textarea","code"]
+        }
+      });
+    </script>
+  </head>
+  <body ng-app="myApp" ng-controller="MainCtrl">
+    <section class="menu"><a href="http://ai.sfls.cn/">Back</a></section>
+    <section class="title">
+      <div class="title-region">
+        <h1 class="title">Sine and Cosine</h1>
+        <h3 class="by-line">Explained Visually</h3>
+      </div>
+    </section>
+    <section>
+     
+      <p>Sine and cosine &mdash; a.k.a., sin(θ) and cos(θ) &mdash; are functions revealing the shape of a right triangle. Looking out from a vertex with angle θ, sin(θ) is the ratio of the <tspan class="direct" style="background-color: #2ecc71;">opposite</tspan> side to the  <tspan class="direct" style="background-color: #9b59b6;">hypotenuse</tspan>, while cos(θ) is the ratio of the <tspan class="direct" style="background-color: #3498db;">adjacent</tspan> side to the <tspan class="direct" style="background-color: #9b59b6;">hypotenuse</tspan>. No matter the size of the triangle, the values of sin(θ) and cos(θ) are the same for a given θ, as illustrated below.</p>
+		
+		<p>正弦和余弦--又称sin(θ)和cos(θ)--是揭示直角三角形形状的函数。从角度为θ的顶点向外看，sin（θ）是 
+			<tspan class="direct" style="background-color: #2ecc71;">对边</tspan>与
+			<tspan class="direct" style="background-color: #9b59b6;">斜边</tspan>的比率，而cos（θ）是
+			<tspan class="direct" style="background-color: #3498db;">临边</tspan>与
+			<tspan class="direct" style="background-color: #9b59b6;">斜边</tspan>的比率。无论三角形的大小，在给定的θ下，sin(θ)和cos(θ)的值都是一样的，如下图所示。</p>
+    </section>
+    <section>
+      <similar-triangles></similar-triangles>
+      <p>Look at the left-most figure above (the unit circle). The triangle's hypotenuse has length 1, and so (conveniently!) the ratio of its adjacent to its hypotenuse is cos(θ), and the ratio of its opposite to the hypotenuse is sin(θ). Therefore, by placing triangles at the point (0,0) of the x/y plane, the functions sin(θ) and cos(θ) can be found by recording the values of x and y for every θ. Below, click play to see this process unfold. Angles are in <a href='http://en.wikipedia.org/wiki/Radian'>radians</a> (i.e., π/4, π/2,...).</p>
+		<p>请看上面最左边的图（单位圆）。三角形的斜边长度为1，因此（很方便！）它的<tspan class="direct" style="background-color: #3498db;">临边</tspan>与<tspan class="direct" style="background-color: #9b59b6;">斜边</tspan>的比值为cos(θ)，而它的<tspan class="direct" style="background-color: #2ecc71;">对边</tspan>与<tspan class="direct" style="background-color: #9b59b6;">斜边</tspan>的比值为sin(θ)。因此，通过在x/y平面的点（0,0）处放置三角形，可以通过记录每个θ的x和y的值来找到函数sin（θ）和cos（θ）。角度的单位是<a href='https://baike.baidu.com/item/%E5%BC%A7%E5%BA%A6'>radians</a>（即π/4，π/2，...）。</p>
+      <h1>Sin(θ)</h1>
+      <div ng-controller="SineAnimationCtrl">
+        <ev-play-button is-playing="opts.isPlaying" style="width:100%; height: 200px">
+          <trig-transform func="sine"></trig-transform>
+        </ev-play-button>
+      </div>
+    </section>
+    <section ng-controller="CosineAnimationCtrl">
+      <h1>Cos(θ)</h1>
+      <ev-play-button is-playing="opts.isPlaying" style="width:100%; height: 200px">
+        <trig-transform func="cosine"></trig-transform>
+      </ev-play-button>
+    </section>
+    <section>
+      <p>
+        Of course, computers and calculators don't actually draw circles to find sine and cosine. Instead, they use approximations like the <a href='http://en.wikipedia.org/wiki/Taylor_series'>Taylor series: </a>
+		  </p>
+		<p>
+		  当然，计算机和计算器并不真正画圆来寻找正弦和余弦。相反，它们使用<a href='https://zhuanlan.zhihu.com/p/93996275'>泰勒级数： </a>这样的近似方法。
+        \[\begin{aligned}
+          \sin{\theta} = θ - \frac{\theta^3}{3!} + \frac{\theta^5}{5!} -  \frac{\theta^7}{7!} \cdots \\
+          \cos{\theta} = 1 - \frac{\theta^2}{2!} + \frac{\theta^4}{4!} -  \frac{\theta^6}{6!} \cdots
+        \end{aligned} \]
+        
+      </p>
+    </section>
+    <section ng-controller="SineCosineLinkedCtrl">
+      <p>Using sine and cosine, it's possible to describe any (<tspan style="color: #3498db;">x</tspan>,<tspan  style="color: #2ecc71;">y</tspan>) point as an alternative, (<tspan style="color: #9b59b6;">r</tspan>,<tspan  style="color: #c0392b;">θ</tspan>) point, where <tspan style="color: #9b59b6;">r</tspan> is the length of a segment from (0,0) to the point and <tspan  style="color: #c0392b;">θ</tspan> is the angle between that segment and the x-axis. This is called the <a href="http://en.wikipedia.org/wiki/Polar_coordinate_system">polar coordinate system</a>, and the conversion rule is (<tspan style="color: #3498db;">x</tspan>,<tspan  style="color: #2ecc71;">y</tspan>) = (<tspan style="color: #9b59b6;">r</tspan>cos(<tspan  style="color: #c0392b;">θ</tspan>),<tspan style="color: #9b59b6;">r</tspan>sin(<tspan  style="color: #c0392b;">θ</tspan> )). Play with the figures below to see real-time conversion between <a href='http://en.wikipedia.org/wiki/Cartesian_coordinate_system'>Cartesian</a> (i.e., x/y coordinates) and polar coordinates.</p>
+		<p>使用正弦和余弦，可以将任何(
+			<tspan class="direct" style="background-color: #3498db;">x</tspan>,
+			<tspan class="direct" style="background-color: #2ecc71;">y</tspan>
+			)点描述为另一个(r,θ)点，其中r是(0,0)到该点的一段长度，θ是该段与x轴的夹角。这被称为极坐标系，转换规则是（<tspan class="direct" style="background-color: #3498db;">x</tspan>,<tspan class="direct" style="background-color: #2ecc71;">y</tspan>）=（rcos(
+			<tspan class="direct" style="background-color: #c0392b;">θ</tspan>
+				),rsin(<tspan class="direct" style="background-color: #c0392b;">θ</tspan>)）。玩玩下面的数字，看看直角坐标（即<tspan class="direct" style="background-color: #3498db;">x</tspan>/<tspan class="direct" style="background-color: #2ecc71;">y</tspan>坐标）和极坐标之间的实时转换。</p>
+      
+    </section>
+    <section>
+      <div style="clear:both"></div>
+      <linked-coordinates></linked-coordinates>
+    </section>
+  </body>
+  <script type="text/javascript" src="ev/scripts/MathJax.js?config=default"></script>
+  <script src="ev/sine-and-cosine/script.js"></script>
+</html>
